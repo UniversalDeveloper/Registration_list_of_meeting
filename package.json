@@ -1,0 +1,23 @@
+{
+  "name": "registration_list_of_meeting",
+  "version": "1.0.0",
+  "description": "rest api fullstack registration list",
+  "main": "server_app.js",
+  "scripts": {
+    "start": "node server_app.js ",
+    "dev":"nodemon server_app.js"
+  },
+  "keywords": [
+    "js",
+    "rest",
+    "api"
+  ],
+  "author": "Stacy Lopata",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
