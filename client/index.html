@@ -25,6 +25,7 @@
 <button class="btn btn-primary" type="submit">Create</button>
 </form>
 
+<div v-if="contacts.length">
 <div class="card mb-3" v-for ="contact in contacts">
     <div class="card-body">
         <h5 class="card-title">{{contact.name}}</h5>
@@ -32,7 +33,9 @@
         <button class="btn btn-primary">Cancel</button>
         <button class="btn btn-danger">Delete</button>
     </div>
+    </div>
 </div>
+<p v-else >No one is at the meeting</p>
 
 
 
