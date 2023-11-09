@@ -27,7 +27,7 @@
 <label for="value" class="mr-3">Email:</label>
 <input type="text" class="form-control" id="value" v-model="form.value">
     </div>
-<button class="btn btn-primary" type="submit">Create</button>
+<button class="btn btn-primary" type="submit" :disabled="!canCreate">Create</button>
 </form>
 
 <div v-if="contacts.length">
