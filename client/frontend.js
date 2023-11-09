@@ -9,7 +9,9 @@ return{
     name: '',
     value: ''
   },
-  contacts: []
+  contacts: [
+    {id:1, name:'cat', value:'ndsfdjf@kk',marked: false}
+  ]
 }
   },
   methods:{
@@ -18,7 +20,13 @@ return{
      this.contacts.push({...contact, id: Date.now()})
     this.form.name= this.form.value=''
     
-    }
+    },
+    markContact(id){
+const contact = this.contacts.find(c=>c.id===id)
+contact.marked= true;
+    },
+    removeContact(id){}
+
   }
 }).mount('#app')
 
