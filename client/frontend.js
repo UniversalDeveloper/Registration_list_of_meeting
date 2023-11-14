@@ -35,8 +35,8 @@ this.contacts= this.contacts.filter(c=>c.id !==id);
   },
   async mounted()//cales when component is ready. When Vue.js is ready
   {
-   const data= await request('/api/contacts')// first rest appi request
- console.log(data)
+    this.contacts= await request('/api/contacts')// first rest appi request
+ 
   }
 
 
