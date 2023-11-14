@@ -9,9 +9,7 @@ return{
     name: '',
     value: ''
   },
-  contacts: [
-    {id:1, name:'cat', value:'ndsfdjf@kk',marked: false}
-  ]
+  contacts: [ ]
 }
   },
 computed:{
@@ -33,12 +31,37 @@ contact.marked= true;
     },
     removeContact(id){
 this.contacts= this.contacts.filter(c=>c.id !==id);
-
-
     }
+  },
+  mounted()//cales when component is ready
+  {console.log('Ready?')}
 
-  }
+
+
 }).mount('#app')
+
+//this is a smale library
+async function request(url, method ='GET', data= null){
+try{
+const headers={}
+let body
+if(data){
+  headers['Content-Type']= 'application/json'
+  body= JSON.stringify(data)//does convert Js val to a
+}
+
+const response= await fetch(url,{
+  method,
+  headers,
+  body
+})
+
+return await response.json()
+
+}catch (e){
+console.warn( e.message);
+}
+}
 
  /* createApp({
     setup() {
