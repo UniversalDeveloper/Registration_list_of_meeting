@@ -6,6 +6,11 @@ const CONTACTS= [
     {id:1, name:'cat', value:'ndsfdjf@kk',marked: false}
 ]
 
+//GET
+app.get('/api/contacts',(req,res)=>{
+    res.status(200).json(CONTACTS)
+})
+
 app.use(express.static(path.resolve(__dirname,'client')))//create static folder 
 
 app.get('*',(req, res) =>{
