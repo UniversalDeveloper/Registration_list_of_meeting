@@ -29,11 +29,14 @@ computed:{
   methods:{
    async createContact(){
       const{...contact}=this.form 
-const response= await request('/api/contacts','POST',contact)
-console.log(response)
+const response= await request('/api/contacts','POST',contact)//return all arrar of enter data
 
-    // this.contacts.push({...contact, id: Date.now(), marked: false})
-   // this.form.name= this.form.value=''
+console.log(response.contact)//take onle needed filds of enter data
+//console.log({...contact, id: Date.now(), marked: false})
+
+this.contacts.push(response.contact)
+   
+    this.form.name= this.form.value=''// cleans entered fields
     
     },
     markContact(id){
