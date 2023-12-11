@@ -1,10 +1,18 @@
+
 const { createApp, ref } = Vue
+const app =createApp({})
+
+const loaderCompon={
+  template: '<div style="display: flex; justify-content: center; align-item: center"> <div class="spinner-border" role="status">  <span class="visually-hidden">Loading...</span></div>  </div> '
+};
+
 
 createApp({
 
   el: '#app',
   data(){
 return{
+  loading: false,
   form: {
     name: '',
     value: ''
@@ -33,15 +41,17 @@ contact.marked= true;
 this.contacts= this.contacts.filter(c=>c.id !==id);
     }
   },
+
   async mounted()//cales when component is ready. When Vue.js is ready
   {
+    this.loading= true;
     this.contacts= await request('/api/contacts')// first rest appi request
- 
+ this.loading= false;
   }
 
+}).component('loader', loaderCompon).mount('#app')
 
 
-}).mount('#app')
 
 //this is a smale library
 async function request(url, method ='GET', data= null){

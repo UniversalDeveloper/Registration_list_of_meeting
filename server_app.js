@@ -8,7 +8,11 @@ const CONTACTS= [
 
 //GET
 app.get('/api/contacts',(req,res)=>{
-    res.status(200).json(CONTACTS)
+    setTimeout(()=>{
+res.status(200).json(CONTACTS)
+
+    },"6000")
+    
 })
 
 app.use(express.static(path.resolve(__dirname,'client')))//create static folder 
