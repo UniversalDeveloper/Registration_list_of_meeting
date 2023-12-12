@@ -3,7 +3,7 @@ const path= require('path')
 const {v4}=require('uuid')
 const app= express()//put  object express on app
 
-let CONTACTS= [// emulator of db
+let CONTACTS= [// emulaitor of db
     {id:v4(), name:'cat', value:'ndsfdjf@kk',marked: false}
 ]
 
@@ -27,13 +27,13 @@ app.get('*',(req, res) =>{
 app.post('/api/contacts',(req,res)=>{
    const contact={... req.body, id: v4(), marked:false}
    CONTACTS.push(contact)
-res.status(201).json({contact})// el from clinte side was created
+res.status(201).json(contact)// el from clinte side was created
 })
 
 //DELETE
 app.delete('/api/contacts/:id',(req,res)=>{
 CONTACTS= CONTACTS.filter(c=>c.id !== req.params.id)
-res.status(200).json({massage:'Contact was deleted'})
+res.status(200).json({massage:"Contact was deleted"})
 
 })
 
