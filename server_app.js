@@ -3,7 +3,7 @@ const path= require('path')
 const {v4}=require('uuid')
 const app= express()//put  object express on app
 
-const CONTACTS= [// emulator of db
+let CONTACTS= [// emulator of db
     {id:v4(), name:'cat', value:'ndsfdjf@kk',marked: false}
 ]
 
@@ -29,5 +29,14 @@ app.post('/api/contacts',(req,res)=>{
    CONTACTS.push(contact)
 res.status(201).json({contact})// el from clinte side was created
 })
+
+//DELETE
+app.delete('/api/contacts/:id',(req,res)=>{
+CONTACTS= CONTACTS.filter(c=>c.id !== req.params.id)
+res.status(200).json({massage:'Contact was deleted'})
+
+})
+
+
 
 app.listen(3000,()=> console.log('Server has been started on port 3000...'))//http://localhost:3000/

@@ -29,12 +29,12 @@ computed:{
   methods:{
    async createContact(){
       const{...contact}=this.form 
-const response= await request('/api/contacts','POST',contact)//return all arrar of enter data
+const newContact= await request('/api/contacts','POST',contact)//return all arrar of enter data
 
-console.log(response.contact)//take onle needed filds of enter data
+console.log(newContact.contact)//take onle needed filds of enter data
 //console.log({...contact, id: Date.now(), marked: false})
 
-this.contacts.push(response.contact)
+this.contacts.push(newContact.contact)
    
     this.form.name= this.form.value=''// cleans entered fields
     
@@ -43,8 +43,10 @@ this.contacts.push(response.contact)
 const contact = this.contacts.find(c=>c.id===id)
 contact.marked= true;
     },
-    removeContact(id){
-this.contacts= this.contacts.filter(c=>c.id !==id);
+   
+  async  removeContact(id){
+   await request('/api/contacts/${id}','DELETE')//use id which we delete
+this.contacts= this.contacts.filter(c=>c.id !==id);//after deleted on server we delete on frontend
     }
   },
 
