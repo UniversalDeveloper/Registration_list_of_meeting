@@ -34,11 +34,17 @@ res.status(201).json(contact)// el from clinte side was created
 app.delete('/api/contacts/:id',(req,res)=>{
    
 CONTACTS= CONTACTS.filter(c=>c.id !== req.params.id)
-
 res.status(200).json({massage:"Contact was deleted"})
 
 })
 
+// PUT
+app.put('/api/contacts/:id',(req,res)=>{
+ const idx= CONTACTS.findIndex(c=> c.id=== req.params.id)
+ CONTACTS[idx]=req.body
+ res.json(CONTACTS[idx])
+
+})
 
 
 app.listen(3000,()=> console.log('Server has been started on port 3000...'))//http://localhost:3000/

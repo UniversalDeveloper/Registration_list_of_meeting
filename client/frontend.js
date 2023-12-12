@@ -40,8 +40,12 @@ this.contacts.push(newContact)
     
     },
   async  markContact(id){
-const contact = this.contacts.find(c=>c.id===id)
-contact.marked= true;
+    const contact = this.contacts.find(c=>c.id===id)//find cuurent contact
+   const updated= await request(`/api/contacts/${id}`,'PUT',{
+      ...contact,    
+        marked: true
+    })
+contact.marked=updated.marked//synchronize frontend and backend
     },
    
   async  removeContact(id){
