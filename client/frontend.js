@@ -31,7 +31,7 @@ computed:{
       const{...contact}=this.form 
 const newContact= await request('/api/contacts','POST',contact)//return all arrar of enter data
 
-console.log(newContact)//take onle needed filds of enter data
+//console.log(newContact)//take onle needed filds of enter data
 //console.log({...contact, id: Date.now(), marked: false})
 
 this.contacts.push(newContact)
@@ -39,14 +39,14 @@ this.contacts.push(newContact)
     this.form.name= this.form.value=''// cleans entered fields
     
     },
-    markContact(id){
+  async  markContact(id){
 const contact = this.contacts.find(c=>c.id===id)
 contact.marked= true;
     },
    
   async  removeContact(id){
-   await request('/api/contacts/${id}','DELETE')//use id which we delete
-this.contacts= this.contacts.filter(c=>c.id !==id);//after deleted on server
+ await request(`/api/contacts/${id}`,'DELETE')//use id which we delete !! on rigch side of brecets``
+ this.contacts= this.contacts.filter(c=>c.id !==id);//after deleted on server
     }
   },
 

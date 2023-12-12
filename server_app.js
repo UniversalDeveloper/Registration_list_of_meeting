@@ -32,7 +32,9 @@ res.status(201).json(contact)// el from clinte side was created
 
 //DELETE
 app.delete('/api/contacts/:id',(req,res)=>{
+   
 CONTACTS= CONTACTS.filter(c=>c.id !== req.params.id)
+
 res.status(200).json({massage:"Contact was deleted"})
 
 })
